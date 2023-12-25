@@ -1,3 +1,5 @@
+//** component to show user detail and posts of user */
+
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom';
 import urls from '../url';
@@ -23,6 +25,7 @@ function UserDetails() {
         setShowTime(moment(data.unixtime, "X").tz(data.timezone).format('HH:mm:ss'));
     };
 
+    //** useEfect to call API to get country list */
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -31,7 +34,6 @@ function UserDetails() {
                 if (!countryResponse.ok) {
                     throw new Error(`HTTP error for users API! Status: ${countryResponse.status}`);
                 }
-
                 const countries = await countryResponse.json();
 
                 setCountryList(countries);
@@ -89,6 +91,7 @@ function UserDetails() {
 
             </div>
 
+            {/* User digital to show profile data */}
             <h4>Profile Page</h4>
             <div className="clickable-card">
                 <div className="user-info">
@@ -101,6 +104,7 @@ function UserDetails() {
                 </div>
             </div>
 
+            {/* Card to show posts of user */}
             <div className='post-component'>
                 {postData ? postData.map((post) =>
                     <div className="post-card">

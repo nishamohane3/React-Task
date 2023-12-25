@@ -3,12 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import urls from '../url';
 import './UserList.css'
 
+//** Component to show cards of user on directory page */
 const ClickableCard = ({ userName, postCount, userId, userDetails, postData }) => {
     const navigate = useNavigate();
 
     const handleCardClick = () => {
         console.log(`Card with id ${userId} clicked!`);
-        navigate(`/user/${userId}`, { state: { userDetails,postData } }); // Use navigate to go to the user's unique page
+        navigate(`/user/${userId}`, { state: { userDetails, postData } }); // Use navigate to go to the user's unique page
     };
 
     return (
@@ -29,6 +30,7 @@ const UserList = () => {
     const [clickedCardId, setClickedCardId] = useState(null);
     const [post, setPost] = useState({});
 
+    //** useEffect to call user and post data API */
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -83,7 +85,7 @@ const UserList = () => {
             <h1>Directory</h1>
             {userData ? userData.map((user) =>
                 <ClickableCard
-                    key={user.id} // Make sure to provide a unique key for each item in the list
+                    key={user.id}
                     userName={user.name}
                     postCount={postCounts[user.id] || 0}
                     userId={user.id}
