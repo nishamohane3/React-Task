@@ -26,8 +26,6 @@ const UserList = () => {
     const [userData, setUserData] = useState(null);
     const [postsdata, setPostsData] = useState(null);
     const [postCounts, setPostCounts] = useState({});
-    const [error, setError] = useState(null);
-    const [clickedCardId, setClickedCardId] = useState(null);
     const [post, setPost] = useState({});
 
     //** useEffect to call user and post data API */
@@ -73,7 +71,7 @@ const UserList = () => {
 
 
             } catch (error) {
-                setError(error.message);
+                console.log(error.message);
             }
         };
 

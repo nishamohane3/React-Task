@@ -10,7 +10,6 @@ function UserDetails() {
 
     const { state } = useLocation();
     const [countryList, setCountryList] = useState([])
-    const [error, setError] = useState(null);
     const [selectedCountry, setSelectedCountry] = useState("");
     const [showTime, setShowTime] = useState(null);
     const [clockRunning, setClockRunning] = useState(true);
@@ -39,7 +38,7 @@ function UserDetails() {
                 setCountryList(countries);
 
             } catch (error) {
-                setError(error.message);
+                console.log(error.message);
             }
         };
 
